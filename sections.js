@@ -41,6 +41,18 @@ export class MenuBarSection extends Section {
     this.openMenuEl = null;
     this.openTrigger = null;
 
+    // Click handler for menubar triggers: toggle menu open/close
+    this.triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        if (trigger.getAttribute('aria-expanded') === 'true') {
+          this._closeMenu();
+          trigger.focus();
+        } else {
+          this._openMenu(trigger, 'first');
+        }
+      });
+    });
+
     // Close button click handler for documentation dialog
     const closeBtn = document.getElementById('keyboard-shortcuts-close');
     if (closeBtn) {
@@ -235,6 +247,18 @@ export class AppToolbarSection extends Section {
     this.tilesMenuTrigger = rootEl.querySelector('[aria-controls="tiles-menu"]');
     this.tilesMenu = document.getElementById('tiles-menu');
     this.tilesMenuOpen = false;
+
+    // Click handler for Tiles menu trigger
+    if (this.tilesMenuTrigger) {
+      this.tilesMenuTrigger.addEventListener('click', () => {
+        if (this.tilesMenuOpen) {
+          this._closeTilesMenu();
+          this.tilesMenuTrigger.focus();
+        } else {
+          this._openTilesMenu();
+        }
+      });
+    }
   }
 
   handleKey(e) {

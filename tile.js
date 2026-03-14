@@ -30,6 +30,30 @@ export class TileToolbar {
       ? document.getElementById(this.paletteOpener.getAttribute('aria-controls'))
       : null;
     this.paletteOpen = false;
+
+    // Click handler for style menu trigger
+    if (this.styleMenuTrigger) {
+      this.styleMenuTrigger.addEventListener('click', () => {
+        if (this.styleMenuOpen) {
+          this._closeStyleMenu();
+          this.styleMenuTrigger.focus();
+        } else {
+          this._openStyleMenu();
+        }
+      });
+    }
+
+    // Click handler for palette opener
+    if (this.paletteOpener) {
+      this.paletteOpener.addEventListener('click', () => {
+        if (this.paletteOpen) {
+          this._closePalette();
+          this.paletteOpener.focus();
+        } else {
+          this._openPalette();
+        }
+      });
+    }
   }
 
   /** Show toolbar (remove hidden), focus lastFocused or first tool with roving tabindex. */
@@ -305,6 +329,18 @@ export class Tile {
     // Tile toolbar
     const toolbarEl = rootEl.querySelector('[role="toolbar"]');
     this.toolbar = toolbarEl ? new TileToolbar(toolbarEl, this) : null;
+
+    // Click handler for tile menu trigger
+    if (this.menuTrigger) {
+      this.menuTrigger.addEventListener('click', () => {
+        if (this.menuOpen) {
+          this._closeMenu();
+          this.menuTrigger.focus();
+        } else {
+          this._openMenu();
+        }
+      });
+    }
 
     // Focus/blur events for toolbar visibility
     this.rootEl.addEventListener('focusin', () => this._onFocusIn());
