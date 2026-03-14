@@ -155,6 +155,15 @@ export class TileToolbar {
     this.styleMenu.hidden = false;
     this.styleMenuOpen = true;
     const items = this._getStyleMenuItems();
+    items.forEach(item => {
+      if (!item._hasClickHandler) {
+        item.addEventListener('click', () => {
+          this._closeStyleMenu();
+          this.styleMenuTrigger.focus();
+        });
+        item._hasClickHandler = true;
+      }
+    });
     if (items.length > 0) {
       items.forEach(item => (item.tabIndex = -1));
       items[0].tabIndex = 0;
@@ -428,6 +437,15 @@ export class Tile {
     this.menuEl.hidden = false;
     this.menuOpen = true;
     const items = this._getMenuItems();
+    items.forEach(item => {
+      if (!item._hasClickHandler) {
+        item.addEventListener('click', () => {
+          this._closeMenu();
+          this.menuTrigger.focus();
+        });
+        item._hasClickHandler = true;
+      }
+    });
     if (items.length > 0) {
       items.forEach(item => (item.tabIndex = -1));
       items[0].tabIndex = 0;

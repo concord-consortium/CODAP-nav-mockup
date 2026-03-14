@@ -120,12 +120,33 @@ export class MenuBarSection extends Section {
     this.openTrigger = trigger;
 
     const items = getMenuItems(menuEl);
+    // Add click handlers to menu items
+    items.forEach(item => {
+      if (!item._hasClickHandler) {
+        item.addEventListener('click', () => this._activateMenuItem(item));
+        item._hasClickHandler = true;
+      }
+    });
+
     if (items.length > 0) {
       if (focusPosition === 'last') {
         focusMenuItem(items, items.length - 1);
       } else {
         focusMenuItem(items, 0);
       }
+    }
+  }
+
+  _activateMenuItem(item) {
+    const itemText = item.textContent.trim();
+    if (itemText === 'Documentation') {
+      const helpTrigger = this.openTrigger;
+      this._closeMenu();
+      helpTrigger.focus();
+      this.focusManager.openDocumentationDialog();
+    } else {
+      const trigger = this._closeMenu();
+      if (trigger) trigger.focus();
     }
   }
 
@@ -211,17 +232,7 @@ export class MenuBarSection extends Section {
       case 'Enter':
       case ' ': {
         e.preventDefault();
-        const itemText = current.textContent.trim();
-        if (itemText === 'Documentation') {
-          // Save helpTrigger before closing menu
-          const helpTrigger = this.openTrigger;
-          this._closeMenu();
-          helpTrigger.focus();
-          this.focusManager.openDocumentationDialog();
-        } else {
-          const trigger = this._closeMenu();
-          if (trigger) trigger.focus();
-        }
+        this._activateMenuItem(current);
         break;
       }
       case 'Escape': {
@@ -326,6 +337,17 @@ export class AppToolbarSection extends Section {
     this.tilesMenuOpen = true;
 
     const items = getMenuItems(this.tilesMenu);
+    // Add click handlers to tiles menu items
+    items.forEach((item, i) => {
+      if (!item._hasClickHandler) {
+        item.addEventListener('click', () => {
+          this._closeTilesMenu();
+          this._jumpToTileByNumber(i + 1);
+        });
+        item._hasClickHandler = true;
+      }
+    });
+
     if (items.length > 0) {
       if (focusPosition === 'last') {
         focusMenuItem(items, items.length - 1);
