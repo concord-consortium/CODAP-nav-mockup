@@ -1,0 +1,5 @@
+{"type":"server-started","port":55292,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55292","screen_dir":"/Users/ddamelin/Development/CODAP-nav-mockup/.superpowers/brainstorm/81128-1773441368"}
+{"type":"screen-added","file":"/Users/ddamelin/Development/CODAP-nav-mockup/.superpowers/brainstorm/81128-1773441368/layout.html"}
+{"type":"screen-added","file":"/Users/ddamelin/Development/CODAP-nav-mockup/.superpowers/brainstorm/81128-1773441368/layout-v2.html"}
+{"type":"screen-added","file":"/Users/ddamelin/Development/CODAP-nav-mockup/.superpowers/brainstorm/81128-1773441368/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

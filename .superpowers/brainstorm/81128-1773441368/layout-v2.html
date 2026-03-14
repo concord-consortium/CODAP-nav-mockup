@@ -1,0 +1,93 @@
+<h2>UI Layout — v2</h2>
+<p class="subtitle">Tile toolbar only visible when tile is focused</p>
+
+<div style="font-family: system-ui, sans-serif; border: 2px solid #ccc; border-radius: 6px; overflow: hidden; margin-top: 16px; background: #f8f8f8;">
+
+  <!-- Menu Bar -->
+  <div style="background: #2c2c2c; color: white; padding: 4px 12px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid #555;">
+    <span style="font-size: 11px; color: #aaa; margin-right: 8px; text-transform: uppercase; letter-spacing: 1px;">Menu Bar</span>
+    <div style="display: flex; gap: 2px;">
+      <div style="padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 13px;">File</div>
+      <div style="padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 13px;">Edit</div>
+      <div style="padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 13px;">View</div>
+      <div style="padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 13px;">Help</div>
+    </div>
+    <div style="margin-left: auto; font-size: 11px; color: #888; font-style: italic;">Ctrl+6 to navigate sections</div>
+  </div>
+
+  <!-- App Toolbar -->
+  <div style="background: #e8e8e8; padding: 5px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #ccc;">
+    <span style="font-size: 11px; color: #888; margin-right: 8px; text-transform: uppercase; letter-spacing: 1px;">App Toolbar</span>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">📄 New</button>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">📂 Open</button>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">💾 Save</button>
+    <div style="width: 1px; height: 20px; background: #bbb; margin: 0 4px;"></div>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">↩ Undo</button>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">↪ Redo</button>
+    <div style="width: 1px; height: 20px; background: #bbb; margin: 0 4px;"></div>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">📊 Graph</button>
+    <button style="padding: 4px 10px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 12px; cursor: pointer;">📋 Table</button>
+  </div>
+
+  <!-- Tile Area -->
+  <div style="background: #f0f0f0; padding: 12px; min-height: 340px;">
+    <div style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Tile Area &nbsp;·&nbsp; Ctrl+Tab to move between tiles</div>
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+
+      <!-- Tile 1: Graph — FOCUSED, toolbar visible -->
+      <div style="background: white; border: 2px solid #4a90d9; border-radius: 6px; width: 220px; box-shadow: 0 2px 8px rgba(74,144,217,0.3); position: relative; display: flex;">
+        <div style="flex: 1; padding: 8px;">
+          <div style="font-size: 11px; color: #4a90d9; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Active tile</div>
+          <input value="Graph" style="font-weight: bold; font-size: 14px; border: none; border-bottom: 1px dashed #ccc; width: 100%; margin-bottom: 8px; background: transparent; outline: 2px solid #4a90d9; outline-offset: 2px; border-radius: 2px;" readonly />
+          <div style="background: #e8f0fb; border-radius: 4px; height: 100px; display: flex; align-items: center; justify-content: center; color: #4a90d9; font-size: 12px; margin-bottom: 8px;">📊 Graph content</div>
+          <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Zoom</button>
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Filter</button>
+            <select style="padding: 3px 6px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px;"><option>Axes ▾</option></select>
+          </div>
+        </div>
+        <!-- Tile Toolbar — visible because tile is focused -->
+        <div style="width: 30px; background: #dde8f5; border-left: 1px solid #4a90d9; border-radius: 0 4px 4px 0; display: flex; flex-direction: column; align-items: center; padding: 6px 0; gap: 6px;">
+          <div style="font-size: 8px; color: #4a90d9; writing-mode: vertical-rl; text-orientation: mixed; margin-bottom: 4px; letter-spacing: 1px;">TOOLS</div>
+          <button style="width: 22px; height: 22px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 11px; cursor: pointer; padding: 0;" title="Settings">⚙</button>
+          <button style="width: 22px; height: 22px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 11px; cursor: pointer; padding: 0;" title="Style menu">🎨</button>
+          <button style="width: 22px; height: 22px; border-radius: 4px; border: 1px solid #aaa; background: white; font-size: 11px; cursor: pointer; padding: 0;" title="Palette">☰</button>
+        </div>
+      </div>
+
+      <!-- Tile 2: Data Table — not focused, no toolbar -->
+      <div style="background: white; border: 2px solid #ccc; border-radius: 6px; width: 220px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); position: relative;">
+        <div style="padding: 8px;">
+          <input value="Data Table" style="font-weight: bold; font-size: 14px; border: none; border-bottom: 1px dashed #ccc; width: 100%; margin-bottom: 8px; background: transparent;" readonly />
+          <div style="background: #f5f5f5; border-radius: 4px; height: 100px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 12px; margin-bottom: 8px;">📋 Table content</div>
+          <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Sort</button>
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Search</button>
+            <select style="padding: 3px 6px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px;"><option>Columns ▾</option></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tile 3: Map — not focused, no toolbar -->
+      <div style="background: white; border: 2px solid #ccc; border-radius: 6px; width: 220px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); position: relative;">
+        <div style="padding: 8px;">
+          <input value="Map" style="font-weight: bold; font-size: 14px; border: none; border-bottom: 1px dashed #ccc; width: 100%; margin-bottom: 8px; background: transparent;" readonly />
+          <div style="background: #f0f7ee; border-radius: 4px; height: 100px; display: flex; align-items: center; justify-content: center; color: #4a7c59; font-size: 12px; margin-bottom: 8px;">🗺 Map content</div>
+          <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Zoom</button>
+            <button style="padding: 3px 8px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px; cursor: pointer;">Layers</button>
+            <select style="padding: 3px 6px; border-radius: 4px; border: 1px solid #aaa; font-size: 11px;"><option>Legend ▾</option></select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 16px; font-size: 12px; color: #666; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+  <div><strong>Toolbar appears</strong> when any element inside the tile has keyboard focus</div>
+  <div><strong>Toolbar hides</strong> when focus moves to another tile or section</div>
+  <div><strong>Blue outline on title</strong> = current focused element within active tile</div>
+  <div><strong>Ctrl+T</strong> = jump focus into the tile's toolbar</div>
+</div>
