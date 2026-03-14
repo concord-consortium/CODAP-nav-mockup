@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODAP Keyboard Navigation Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div role="application" aria-label="CODAP" aria-describedby="app-nav-hint">
+  <span id="app-nav-hint" class="sr-only">
+    Press Control+6 to move to the next section. Press Shift+Control+6 to move to the previous section.
+    Press Control+Option+Command+T to open the Tiles menu and jump to a tile by number.
+    Press Command+Shift+? to open keyboard shortcuts.
+  </span>
+
+  <!-- ========== SECTION 1: MenuBar ========== -->
+  <div role="menubar" aria-label="Application menu" id="menubar">
+    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+            aria-controls="file-menu" tabindex="0">File</button>
+    <ul role="menu" id="file-menu" aria-label="File menu" hidden>
+      <li role="none"><button role="menuitem" tabindex="-1">New</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Open</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Save</button></li>
+    </ul>
+
+    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+            aria-controls="edit-menu" tabindex="-1">Edit</button>
+    <ul role="menu" id="edit-menu" aria-label="Edit menu" hidden>
+      <li role="none"><button role="menuitem" tabindex="-1">Cut</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Copy</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Paste</button></li>
+    </ul>
+
+    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+            aria-controls="view-menu" tabindex="-1">View</button>
+    <ul role="menu" id="view-menu" aria-label="View menu" hidden>
+      <li role="none"><button role="menuitem" tabindex="-1">Zoom In</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Zoom Out</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">Full Screen</button></li>
+    </ul>
+
+    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+            aria-controls="help-menu" tabindex="-1">Help</button>
+    <ul role="menu" id="help-menu" aria-label="Help menu" hidden>
+      <li role="none"><button role="menuitem" tabindex="-1">Documentation</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">About</button></li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 2: AppToolbar ========== -->
+  <div role="toolbar" aria-label="Application toolbar" id="app-toolbar">
+    <button aria-label="Add table tile" tabindex="0">Table</button>
+    <button aria-label="Add graph tile" tabindex="-1">Graph</button>
+    <button aria-label="Add slider tile" tabindex="-1">Slider</button>
+    <button aria-label="Add text tile" tabindex="-1">Text</button>
+    <button aria-label="Undo" tabindex="-1">Undo</button>
+    <button aria-label="Redo" tabindex="-1">Redo</button>
+
+    <button aria-haspopup="menu" aria-expanded="false"
+            aria-controls="tiles-menu" aria-label="Tiles menu" tabindex="-1">Tiles</button>
+    <ul role="menu" id="tiles-menu" aria-label="Tiles menu" hidden>
+      <li role="none"><button role="menuitem" tabindex="-1">(1) Graph</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">(2) Data Table</button></li>
+      <li role="none"><button role="menuitem" tabindex="-1">(3) Map</button></li>
+    </ul>
+  </div>
+
+  <!-- ========== SECTION 3: TileArea ========== -->
+  <div role="region" aria-label="Tile area" aria-describedby="tile-area-hint" id="tile-area">
+    <span id="tile-area-hint" class="sr-only">
+      Press Control+Option+N to move to the next tile, Shift+Control+Option+N to move to the previous tile.
+    </span>
+
+    <!-- Tile 1: Graph -->
+    <div role="region" aria-label="Graph tile" aria-describedby="graph-tile-hint" class="tile" data-tile-index="0">
+      <span id="graph-tile-hint" class="sr-only">
+        Use Tab to move between controls. Press Control+T to open tile toolbar.
+      </span>
+      <div class="tile-content">
+        <input type="text" aria-label="Tile title" value="Graph" />
+        <div class="tile-body">📊 Graph content</div>
+        <div class="tile-controls">
+          <button aria-label="Zoom">Zoom</button>
+          <button aria-label="Filter">Filter</button>
+          <button aria-haspopup="menu" aria-expanded="false" aria-controls="graph-axes-menu">Axes</button>
+          <ul role="menu" id="graph-axes-menu" aria-label="Axes menu" hidden>
+            <li role="none"><button role="menuitem" tabindex="-1">X Axis</button></li>
+            <li role="none"><button role="menuitem" tabindex="-1">Y Axis</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <span id="graph-toolbar-hint" class="sr-only">
+        Use Up and Down arrows to navigate. Press Escape to return to tile.
+      </span>
+      <div role="toolbar" aria-label="Graph tile toolbar" aria-orientation="vertical"
+           aria-describedby="graph-toolbar-hint" class="tile-toolbar" hidden>
+        <button aria-label="Settings" tabindex="0">⚙</button>
+
+        <button aria-haspopup="menu" aria-expanded="false"
+                aria-controls="graph-style-menu" aria-label="Style options" tabindex="-1">🎨</button>
+        <ul role="menu" id="graph-style-menu" aria-label="Style menu" hidden>
+          <li role="none"><button role="menuitem" tabindex="-1">Color</button></li>
+          <li role="none"><button role="menuitem" tabindex="-1">Font</button></li>
+        </ul>
+
+        <button aria-haspopup="dialog" aria-expanded="false"
+                aria-controls="graph-palette" aria-label="Open display palette" tabindex="-1">☰</button>
+        <div role="dialog" id="graph-palette" aria-label="Display palette" hidden>
+          <fieldset>
+            <legend>Display options</legend>
+            <label><input type="checkbox" /> Show legend</label>
+            <label><input type="checkbox" /> Show grid</label>
+            <label><input type="checkbox" /> Show values</label>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 2: Data Table -->
+    <div role="region" aria-label="Data Table tile" aria-describedby="datatable-tile-hint" class="tile" data-tile-index="1">
+      <span id="datatable-tile-hint" class="sr-only">
+        Use Tab to move between controls. Press Control+T to open tile toolbar.
+      </span>
+      <div class="tile-content">
+        <input type="text" aria-label="Tile title" value="Data Table" />
+        <div class="tile-body">📋 Table content</div>
+        <div class="tile-controls">
+          <button aria-label="Sort">Sort</button>
+          <button aria-label="Search">Search</button>
+          <button aria-haspopup="menu" aria-expanded="false" aria-controls="datatable-columns-menu">Columns</button>
+          <ul role="menu" id="datatable-columns-menu" aria-label="Columns menu" hidden>
+            <li role="none"><button role="menuitem" tabindex="-1">Name</button></li>
+            <li role="none"><button role="menuitem" tabindex="-1">Value</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <span id="datatable-toolbar-hint" class="sr-only">
+        Use Up and Down arrows to navigate. Press Escape to return to tile.
+      </span>
+      <div role="toolbar" aria-label="Data Table tile toolbar" aria-orientation="vertical"
+           aria-describedby="datatable-toolbar-hint" class="tile-toolbar" hidden>
+        <button aria-label="Settings" tabindex="0">⚙</button>
+
+        <button aria-haspopup="menu" aria-expanded="false"
+                aria-controls="datatable-style-menu" aria-label="Style options" tabindex="-1">🎨</button>
+        <ul role="menu" id="datatable-style-menu" aria-label="Style menu" hidden>
+          <li role="none"><button role="menuitem" tabindex="-1">Color</button></li>
+          <li role="none"><button role="menuitem" tabindex="-1">Font</button></li>
+        </ul>
+
+        <button aria-haspopup="dialog" aria-expanded="false"
+                aria-controls="datatable-palette" aria-label="Open display palette" tabindex="-1">☰</button>
+        <div role="dialog" id="datatable-palette" aria-label="Display palette" hidden>
+          <fieldset>
+            <legend>Display options</legend>
+            <label><input type="checkbox" /> Show legend</label>
+            <label><input type="checkbox" /> Show grid</label>
+            <label><input type="checkbox" /> Show values</label>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 3: Map -->
+    <div role="region" aria-label="Map tile" aria-describedby="map-tile-hint" class="tile" data-tile-index="2">
+      <span id="map-tile-hint" class="sr-only">
+        Use Tab to move between controls. Press Control+T to open tile toolbar.
+      </span>
+      <div class="tile-content">
+        <input type="text" aria-label="Tile title" value="Map" />
+        <div class="tile-body">🗺 Map content</div>
+        <div class="tile-controls">
+          <button aria-label="Zoom">Zoom</button>
+          <button aria-label="Layers">Layers</button>
+          <button aria-haspopup="menu" aria-expanded="false" aria-controls="map-legend-menu">Legend</button>
+          <ul role="menu" id="map-legend-menu" aria-label="Legend menu" hidden>
+            <li role="none"><button role="menuitem" tabindex="-1">Show</button></li>
+            <li role="none"><button role="menuitem" tabindex="-1">Hide</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <span id="map-toolbar-hint" class="sr-only">
+        Use Up and Down arrows to navigate. Press Escape to return to tile.
+      </span>
+      <div role="toolbar" aria-label="Map tile toolbar" aria-orientation="vertical"
+           aria-describedby="map-toolbar-hint" class="tile-toolbar" hidden>
+        <button aria-label="Settings" tabindex="0">⚙</button>
+
+        <button aria-haspopup="menu" aria-expanded="false"
+                aria-controls="map-style-menu" aria-label="Style options" tabindex="-1">🎨</button>
+        <ul role="menu" id="map-style-menu" aria-label="Style menu" hidden>
+          <li role="none"><button role="menuitem" tabindex="-1">Color</button></li>
+          <li role="none"><button role="menuitem" tabindex="-1">Font</button></li>
+        </ul>
+
+        <button aria-haspopup="dialog" aria-expanded="false"
+                aria-controls="map-palette" aria-label="Open display palette" tabindex="-1">☰</button>
+        <div role="dialog" id="map-palette" aria-label="Display palette" hidden>
+          <fieldset>
+            <legend>Display options</legend>
+            <label><input type="checkbox" /> Show legend</label>
+            <label><input type="checkbox" /> Show grid</label>
+            <label><input type="checkbox" /> Show values</label>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Documentation Dialog (modal) ========== -->
+  <div class="dialog-backdrop" hidden inert></div>
+  <div role="dialog" id="keyboard-shortcuts-dialog"
+       aria-label="Keyboard shortcuts" aria-modal="true" hidden>
+    <button id="keyboard-shortcuts-close" aria-label="Close keyboard shortcuts">✕ Close</button>
+    <h2>Keyboard Shortcuts</h2>
+    <section aria-labelledby="shortcuts-help">
+      <h3 id="shortcuts-help">Help</h3>
+      <dl>
+        <div><dt>Cmd+Shift+?</dt><dd>Open keyboard shortcuts</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="shortcuts-section-nav">
+      <h3 id="shortcuts-section-nav">Section navigation</h3>
+      <dl>
+        <div><dt>Ctrl+6</dt><dd>Move to next section</dd></div>
+        <div><dt>Shift+Ctrl+6</dt><dd>Move to previous section</dd></div>
+        <div><dt>Ctrl+Option+Cmd+T</dt><dd>Open Tiles menu / jump to tile</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="shortcuts-tile-nav">
+      <h3 id="shortcuts-tile-nav">Tile navigation</h3>
+      <dl>
+        <div><dt>Ctrl+Option+N</dt><dd>Move to next tile</dd></div>
+        <div><dt>Shift+Ctrl+Option+N</dt><dd>Move to previous tile</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="shortcuts-within-tile">
+      <h3 id="shortcuts-within-tile">Within a tile</h3>
+      <dl>
+        <div><dt>Tab / Shift+Tab</dt><dd>Move between tile controls (wraps)</dd></div>
+        <div><dt>Ctrl+T</dt><dd>Open tile toolbar</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="shortcuts-toolbar">
+      <h3 id="shortcuts-toolbar">Tile toolbar</h3>
+      <dl>
+        <div><dt>↑ / ↓</dt><dd>Move between toolbar tools (no wrap)</dd></div>
+        <div><dt>Esc</dt><dd>Return to tile</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="shortcuts-menus">
+      <h3 id="shortcuts-menus">Menus</h3>
+      <dl>
+        <div><dt>↑ / ↓</dt><dd>Move between items (wraps)</dd></div>
+        <div><dt>Enter / Space</dt><dd>Activate item</dd></div>
+        <div><dt>Esc</dt><dd>Close menu</dd></div>
+      </dl>
+    </section>
+  </div>
+
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
