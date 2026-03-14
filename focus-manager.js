@@ -98,7 +98,8 @@ export class FocusManager {
     }
 
     // Ctrl+Option+Cmd+T — jump to Tiles menu
-    if (e.key === 't' && e.ctrlKey && e.altKey && e.metaKey && !e.shiftKey) {
+    // Use e.code because macOS Option remaps e.key (e.g. 't' becomes '†')
+    if (e.code === 'KeyT' && e.ctrlKey && e.altKey && e.metaKey && !e.shiftKey) {
       e.preventDefault();
       this._jumpToTilesMenu();
       return;

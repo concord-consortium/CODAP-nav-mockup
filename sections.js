@@ -440,8 +440,9 @@ export class TileAreaSection extends Section {
 
   handleKey(e) {
     // Ctrl+Option+N: move to next tile (WRAPS)
+    // Use e.code because macOS Option remaps e.key (e.g. 'n' becomes '˜')
     if (
-      e.key.toLowerCase() === 'n' &&
+      e.code === 'KeyN' &&
       e.ctrlKey && e.altKey && !e.metaKey && !e.shiftKey
     ) {
       e.preventDefault();
@@ -451,7 +452,7 @@ export class TileAreaSection extends Section {
 
     // Shift+Ctrl+Option+N: move to previous tile (WRAPS)
     if (
-      e.key.toLowerCase() === 'n' &&
+      e.code === 'KeyN' &&
       e.ctrlKey && e.altKey && !e.metaKey && e.shiftKey
     ) {
       e.preventDefault();
