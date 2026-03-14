@@ -1,0 +1,422 @@
+/* ===== Reset & base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* ===== Screen-reader only ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ===== Focus indicators ===== */
+:focus-visible {
+  outline: 2px solid #4a90d9;
+  outline-offset: 2px;
+}
+
+/* ===== MenuBar ===== */
+[role="menubar"] {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #2c2c2c;
+  color: white;
+  padding: 4px 12px;
+  border-bottom: 2px solid #555;
+}
+
+[role="menubar"] > button[role="menuitem"] {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+}
+
+[role="menubar"] > button[role="menuitem"]:hover,
+[role="menubar"] > button[role="menuitem"][aria-expanded="true"] {
+  background: #4a90d9;
+}
+
+[role="menubar"] [role="menu"] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 140px;
+  z-index: 100;
+}
+
+[role="menubar"] [role="menu"] button[role="menuitem"] {
+  display: block;
+  width: 100%;
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+[role="menubar"] [role="menu"] button[role="menuitem"]:hover,
+[role="menubar"] [role="menu"] button[role="menuitem"]:focus-visible {
+  background: #e8f0fb;
+}
+
+/* ===== AppToolbar ===== */
+#app-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8e8e8;
+  padding: 5px 12px;
+  border-bottom: 2px solid #ccc;
+  position: relative;
+}
+
+#app-toolbar > button {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#app-toolbar > button:hover {
+  background: #e8f0fb;
+}
+
+/* Tiles menu dropdown */
+#tiles-menu {
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 160px;
+  z-index: 100;
+}
+
+#tiles-menu button[role="menuitem"] {
+  display: block;
+  width: 100%;
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+#tiles-menu button[role="menuitem"]:hover,
+#tiles-menu button[role="menuitem"]:focus-visible {
+  background: #e8f0fb;
+}
+
+/* ===== Tile Area ===== */
+#tile-area {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  min-height: 340px;
+  background: #f0f0f0;
+  flex-wrap: wrap;
+}
+
+/* ===== Tile ===== */
+.tile {
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  width: 260px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  position: relative;
+}
+
+.tile--focused {
+  border-color: #4a90d9;
+  box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3);
+}
+
+.tile-content {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tile-content input[type="text"] {
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px dashed #ccc;
+  width: 100%;
+  background: transparent;
+  padding: 4px 0;
+}
+
+.tile-body {
+  background: #f5f5f5;
+  border-radius: 4px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+
+.tile-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.tile-controls button {
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  font-size: 11px;
+  cursor: pointer;
+  background: white;
+}
+
+/* Tile content menus */
+.tile-controls [role="menu"] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 120px;
+  z-index: 100;
+}
+
+.tile-controls [role="menu"] button[role="menuitem"] {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tile-controls [role="menu"] button[role="menuitem"]:hover,
+.tile-controls [role="menu"] button[role="menuitem"]:focus-visible {
+  background: #e8f0fb;
+}
+
+/* ===== Tile Toolbar ===== */
+.tile-toolbar {
+  display: none;
+}
+
+.tile--focused .tile-toolbar:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px;
+  width: 36px;
+  background: #e8e8e8;
+  border-left: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+}
+
+.tile-toolbar > button {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background: white;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tile toolbar style menus */
+.tile-toolbar [role="menu"] {
+  position: absolute;
+  right: -140px;
+  top: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 120px;
+  z-index: 100;
+}
+
+.tile-toolbar [role="menu"] button[role="menuitem"] {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tile-toolbar [role="menu"] button[role="menuitem"]:hover,
+.tile-toolbar [role="menu"] button[role="menuitem"]:focus-visible {
+  background: #e8f0fb;
+}
+
+/* ===== Palette (non-modal dialog) ===== */
+.tile-toolbar [role="dialog"] {
+  position: absolute;
+  right: -200px;
+  top: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 12px;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.tile-toolbar [role="dialog"] fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tile-toolbar [role="dialog"] legend {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.tile-toolbar [role="dialog"] label {
+  display: block;
+  font-size: 12px;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+/* ===== Documentation Dialog (modal) ===== */
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+}
+
+#keyboard-shortcuts-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 201;
+}
+
+#keyboard-shortcuts-dialog h2 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+}
+
+#keyboard-shortcuts-dialog h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin: 16px 0 8px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+#keyboard-shortcuts-dialog dl {
+  margin: 0;
+  padding: 0;
+}
+
+#keyboard-shortcuts-dialog dl > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+#keyboard-shortcuts-dialog dt {
+  font-family: monospace;
+  font-weight: bold;
+  color: #333;
+}
+
+#keyboard-shortcuts-dialog dd {
+  margin: 0;
+  color: #666;
+}
+
+#keyboard-shortcuts-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#keyboard-shortcuts-close:hover {
+  background: #f0f0f0;
+}
