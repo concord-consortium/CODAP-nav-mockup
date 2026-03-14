@@ -17,36 +17,44 @@
 
   <!-- ========== SECTION 1: MenuBar ========== -->
   <div role="menubar" aria-label="Application menu" id="menubar">
-    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
-            aria-controls="file-menu" tabindex="0">File</button>
-    <ul role="menu" id="file-menu" aria-label="File menu" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">New</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Open</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Save</button></li>
-    </ul>
+    <div role="none" class="menubar-item">
+      <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+              aria-controls="file-menu" tabindex="0">File</button>
+      <ul role="menu" id="file-menu" aria-label="File menu" hidden>
+        <li role="none"><button role="menuitem" tabindex="-1">New</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Open</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Save</button></li>
+      </ul>
+    </div>
 
-    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
-            aria-controls="edit-menu" tabindex="-1">Edit</button>
-    <ul role="menu" id="edit-menu" aria-label="Edit menu" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">Cut</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Copy</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Paste</button></li>
-    </ul>
+    <div role="none" class="menubar-item">
+      <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+              aria-controls="edit-menu" tabindex="-1">Edit</button>
+      <ul role="menu" id="edit-menu" aria-label="Edit menu" hidden>
+        <li role="none"><button role="menuitem" tabindex="-1">Cut</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Copy</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Paste</button></li>
+      </ul>
+    </div>
 
-    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
-            aria-controls="view-menu" tabindex="-1">View</button>
-    <ul role="menu" id="view-menu" aria-label="View menu" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">Zoom In</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Zoom Out</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">Full Screen</button></li>
-    </ul>
+    <div role="none" class="menubar-item">
+      <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+              aria-controls="view-menu" tabindex="-1">View</button>
+      <ul role="menu" id="view-menu" aria-label="View menu" hidden>
+        <li role="none"><button role="menuitem" tabindex="-1">Zoom In</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Zoom Out</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">Full Screen</button></li>
+      </ul>
+    </div>
 
-    <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
-            aria-controls="help-menu" tabindex="-1">Help</button>
-    <ul role="menu" id="help-menu" aria-label="Help menu" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">Documentation</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">About</button></li>
-    </ul>
+    <div role="none" class="menubar-item">
+      <button role="menuitem" aria-haspopup="menu" aria-expanded="false"
+              aria-controls="help-menu" tabindex="-1">Help</button>
+      <ul role="menu" id="help-menu" aria-label="Help menu" hidden>
+        <li role="none"><button role="menuitem" tabindex="-1">Documentation</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">About</button></li>
+      </ul>
+    </div>
   </div>
 
   <!-- ========== SECTION 2: AppToolbar ========== -->
@@ -58,13 +66,15 @@
     <button aria-label="Undo" tabindex="-1">Undo</button>
     <button aria-label="Redo" tabindex="-1">Redo</button>
 
-    <button role="button" aria-haspopup="menu" aria-expanded="false"
-            aria-controls="tiles-menu" aria-label="Tiles menu" tabindex="-1">Tiles</button>
-    <ul role="menu" id="tiles-menu" aria-label="Tiles menu" hidden>
-      <li role="none"><button role="menuitem" tabindex="-1">(1) Graph</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">(2) Data Table</button></li>
-      <li role="none"><button role="menuitem" tabindex="-1">(3) Map</button></li>
-    </ul>
+    <div class="toolbar-menu-item">
+      <button role="button" aria-haspopup="menu" aria-expanded="false"
+              aria-controls="tiles-menu" aria-label="Tiles menu" tabindex="-1">Tiles</button>
+      <ul role="menu" id="tiles-menu" aria-label="Tiles menu" hidden>
+        <li role="none"><button role="menuitem" tabindex="-1">(1) Graph</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">(2) Data Table</button></li>
+        <li role="none"><button role="menuitem" tabindex="-1">(3) Map</button></li>
+      </ul>
+    </div>
   </div>
 
   <!-- ========== SECTION 3: TileArea ========== -->

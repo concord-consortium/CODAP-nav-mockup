@@ -36,7 +36,7 @@ export class MenuBarSection extends Section {
     super(rootEl);
     this.focusManager = focusManager;
     this.triggers = Array.from(
-      rootEl.querySelectorAll(':scope > button[role="menuitem"]')
+      rootEl.querySelectorAll('button[role="menuitem"][aria-haspopup]')
     );
     this.openMenuEl = null;
     this.openTrigger = null;
@@ -231,7 +231,7 @@ export class AppToolbarSection extends Section {
     super(rootEl);
     this.focusManager = focusManager;
     this.tileAreaSection = tileAreaSection;
-    this.controls = Array.from(rootEl.querySelectorAll(':scope > button'));
+    this.controls = Array.from(rootEl.querySelectorAll(':scope > button, :scope > .toolbar-menu-item > button'));
     this.tilesMenuTrigger = rootEl.querySelector('[aria-controls="tiles-menu"]');
     this.tilesMenu = document.getElementById('tiles-menu');
     this.tilesMenuOpen = false;

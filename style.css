@@ -38,7 +38,11 @@ body {
   border-bottom: 2px solid #555;
 }
 
-[role="menubar"] > button[role="menuitem"] {
+.menubar-item {
+  position: relative;
+}
+
+[role="menubar"] button[role="menuitem"][aria-haspopup] {
   padding: 4px 12px;
   border-radius: 4px;
   border: none;
@@ -46,11 +50,10 @@ body {
   color: white;
   font-size: 13px;
   cursor: pointer;
-  position: relative;
 }
 
-[role="menubar"] > button[role="menuitem"]:hover,
-[role="menubar"] > button[role="menuitem"][aria-expanded="true"] {
+[role="menubar"] button[role="menuitem"][aria-haspopup]:hover,
+[role="menubar"] button[role="menuitem"][aria-haspopup][aria-expanded="true"] {
   background: #4a90d9;
 }
 
@@ -98,7 +101,8 @@ body {
   position: relative;
 }
 
-#app-toolbar > button {
+#app-toolbar > button,
+#app-toolbar .toolbar-menu-item > button {
   padding: 4px 10px;
   border-radius: 4px;
   border: 1px solid #aaa;
@@ -107,15 +111,20 @@ body {
   cursor: pointer;
 }
 
-#app-toolbar > button:hover {
+#app-toolbar > button:hover,
+#app-toolbar .toolbar-menu-item > button:hover {
   background: #e8f0fb;
+}
+
+.toolbar-menu-item {
+  position: relative;
 }
 
 /* Tiles menu dropdown */
 #tiles-menu {
   position: absolute;
   top: 100%;
-  right: 12px;
+  left: 0;
   list-style: none;
   margin: 0;
   padding: 4px 0;
