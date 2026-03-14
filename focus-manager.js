@@ -82,7 +82,8 @@ export class FocusManager {
     }
 
     // Ctrl+6 / Shift+Ctrl+6 — cycle sections
-    if (e.key === '6' && e.ctrlKey && !e.altKey && !e.metaKey) {
+    // Use e.code because Shift+6 produces '^' on macOS, not '6'
+    if (e.code === 'Digit6' && e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
       const current = this.sections[this.activeSectionIndex];
       current.leave();
