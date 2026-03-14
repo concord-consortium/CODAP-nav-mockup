@@ -200,6 +200,11 @@ export class TileToolbar {
       default:
         break;
     }
+
+    // Suppress Ctrl+T browser default (new tab) while style menu is open
+    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
+      e.preventDefault();
+    }
   }
 
   // ---- Palette ----
