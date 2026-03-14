@@ -309,12 +309,12 @@ export class Tile {
     this.lastFocused = null;
     this.returnTarget = null;
 
-    // Main content focusable elements: title input, buttons, menu trigger
+    // Main content focusable elements: buttons, menu trigger, then title input
     const content = rootEl.querySelector('.tile-content');
     this.contentEl = content;
     this.focusables = [
-      content.querySelector('input[type="text"]'),
-      ...Array.from(content.querySelectorAll('.tile-controls > button'))
+      ...Array.from(content.querySelectorAll('.tile-controls > button')),
+      content.querySelector('input[type="text"]')
     ].filter(Boolean);
 
     // Tile menu
