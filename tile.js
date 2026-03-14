@@ -245,22 +245,16 @@ export class TileToolbar {
     }
 
     if (e.key === 'Tab') {
+      e.preventDefault();
+      if (checkboxes.length === 0) return;
       if (e.shiftKey) {
-        // Shift+Tab from first checkbox: focus palette opener, palette STAYS OPEN visually
-        if (idx === 0) {
-          e.preventDefault();
-          this.paletteOpen = false; // Route subsequent keys to toolbar handler
-          this.paletteOpener.focus();
-        }
-        // Otherwise let browser handle Shift+Tab between checkboxes
+        // Shift+Tab wraps within palette checkboxes
+        const prev = (idx - 1 + checkboxes.length) % checkboxes.length;
+        checkboxes[prev].focus();
       } else {
-        // Tab from last checkbox: focus palette opener, palette STAYS OPEN visually
-        if (idx === checkboxes.length - 1) {
-          e.preventDefault();
-          this.paletteOpen = false; // Route subsequent keys to toolbar handler
-          this.paletteOpener.focus();
-        }
-        // Otherwise let browser handle Tab between checkboxes
+        // Tab wraps within palette checkboxes
+        const next = (idx + 1) % checkboxes.length;
+        checkboxes[next].focus();
       }
       return;
     }
