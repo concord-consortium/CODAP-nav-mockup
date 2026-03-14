@@ -246,16 +246,18 @@ export class TileToolbar {
 
     if (e.key === 'Tab') {
       if (e.shiftKey) {
-        // Shift+Tab from first checkbox: focus palette opener, palette STAYS OPEN
+        // Shift+Tab from first checkbox: focus palette opener, palette STAYS OPEN visually
         if (idx === 0) {
           e.preventDefault();
+          this.paletteOpen = false; // Route subsequent keys to toolbar handler
           this.paletteOpener.focus();
         }
         // Otherwise let browser handle Shift+Tab between checkboxes
       } else {
-        // Tab from last checkbox: focus palette opener, palette STAYS OPEN
+        // Tab from last checkbox: focus palette opener, palette STAYS OPEN visually
         if (idx === checkboxes.length - 1) {
           e.preventDefault();
+          this.paletteOpen = false; // Route subsequent keys to toolbar handler
           this.paletteOpener.focus();
         }
         // Otherwise let browser handle Tab between checkboxes
@@ -462,18 +464,17 @@ export class Tile {
         break;
       }
       default:
+        // Ctrl+T while menu is open: close menu, focus trigger, enter toolbar
+        if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
+          e.preventDefault();
+          this._closeMenu();
+          this.menuTrigger.focus();
+          if (this.toolbar) {
+            this.returnTarget = this.menuTrigger;
+            this.toolbar.enter();
+          }
+        }
         break;
-    }
-
-    // Ctrl+T while menu is open: close menu, focus trigger, enter toolbar
-    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
-      e.preventDefault();
-      this._closeMenu();
-      this.menuTrigger.focus();
-      if (this.toolbar) {
-        this.returnTarget = this.menuTrigger;
-        this.toolbar.enter();
-      }
     }
   }
 

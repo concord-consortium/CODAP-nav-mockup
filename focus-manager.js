@@ -125,6 +125,8 @@ export class FocusManager {
     const backdrop = document.querySelector('.dialog-backdrop');
     if (!dialog || !backdrop) return;
 
+    if (!dialog.hidden) return; // Already open
+
     this._dialogReturnTarget = document.activeElement;
     dialog.hidden = false;
     backdrop.hidden = false;
