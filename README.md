@@ -6,7 +6,17 @@ Built with plain HTML, CSS, and vanilla JavaScript — no frameworks or dependen
 
 ## Building and Running
 
-No build step is required. Open `index.html` in any modern browser (Chrome, Safari, Firefox, Edge).
+No build step is required. Because the project uses ES modules, you need to serve the files from a local web server rather than opening `index.html` directly. For example:
+
+```sh
+# Python
+python3 -m http.server
+
+# Node
+npx serve
+```
+
+Then open `http://localhost:8000` (or the port shown) in any modern browser.
 
 ## Keyboard Shortcuts
 
