@@ -135,10 +135,6 @@ export class TileToolbar {
         break;
     }
 
-    // Suppress Ctrl+T browser default (new tab)
-    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
-      e.preventDefault();
-    }
   }
 
   // ---- Style Menu ----
@@ -235,10 +231,6 @@ export class TileToolbar {
         break;
     }
 
-    // Suppress Ctrl+T browser default (new tab) while style menu is open
-    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
-      e.preventDefault();
-    }
   }
 
   // ---- Palette ----
@@ -296,10 +288,6 @@ export class TileToolbar {
       return;
     }
 
-    // Suppress Ctrl+T browser default while palette is open
-    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
-      e.preventDefault();
-    }
   }
 
   /** Returns true if document.activeElement is inside toolbar, style menu, or palette. */
@@ -388,8 +376,8 @@ export class Tile {
       return;
     }
 
-    // Ctrl+T (not while in toolbar): enter toolbar
-    if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
+    // Ctrl+\ (not while in toolbar): enter toolbar
+    if (e.key === '\\' && e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
       if (this.toolbar) {
         this.returnTarget = document.activeElement;
@@ -516,8 +504,8 @@ export class Tile {
         break;
       }
       default:
-        // Ctrl+T while menu is open: close menu, focus trigger, enter toolbar
-        if (e.key === 't' && e.ctrlKey && !e.altKey && !e.metaKey) {
+        // Ctrl+\ while menu is open: close menu, focus trigger, enter toolbar
+        if (e.key === '\\' && e.ctrlKey && !e.altKey && !e.metaKey) {
           e.preventDefault();
           this._closeMenu();
           this.menuTrigger.focus();

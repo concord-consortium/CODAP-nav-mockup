@@ -446,7 +446,7 @@ export class AppToolbarSection extends Section {
     this.focusManager.activeSectionIndex = 2;
   }
 
-  /** Called from FocusManager global shortcut Ctrl+Option+Cmd+T. */
+  /** Called from FocusManager global shortcut Ctrl+'. */
   openTilesMenuFromGlobal() {
     // Update roving tabindex to Tiles trigger
     this.controls.forEach(c => (c.tabIndex = -1));
@@ -485,21 +485,20 @@ export class TileAreaSection extends Section {
   }
 
   handleKey(e) {
-    // Ctrl+Option+N: move to next tile (WRAPS)
-    // Use e.code because macOS Option remaps e.key (e.g. 'n' becomes '˜')
+    // Ctrl+;: move to next tile (WRAPS)
     if (
-      e.code === 'KeyN' &&
-      e.ctrlKey && e.altKey && !e.metaKey && !e.shiftKey
+      e.key === ';' &&
+      e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey
     ) {
       e.preventDefault();
       this._moveTile(+1);
       return;
     }
 
-    // Shift+Ctrl+Option+N: move to previous tile (WRAPS)
+    // Shift+Ctrl+;: move to previous tile (WRAPS)
     if (
-      e.code === 'KeyN' &&
-      e.ctrlKey && e.altKey && !e.metaKey && e.shiftKey
+      e.key === ';' &&
+      e.ctrlKey && !e.altKey && !e.metaKey && e.shiftKey
     ) {
       e.preventDefault();
       this._moveTile(-1);

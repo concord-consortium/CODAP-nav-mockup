@@ -24,10 +24,10 @@ Then open `http://localhost:8000` (or the port shown) in any modern browser.
 
 | Key | Action |
 |-----|--------|
-| Cmd+Shift+? | Open keyboard shortcuts dialog |
-| Ctrl+6 | Move to next section (Menu Bar → App Toolbar → Tile Area) |
-| Shift+Ctrl+6 | Move to previous section |
-| Ctrl+Option+Cmd+T | Jump to Tiles menu / last active tile |
+| Ctrl+/ | Open keyboard shortcuts dialog |
+| Ctrl+. | Move to next section (Menu Bar → App Toolbar → Tile Area) |
+| Shift+Ctrl+. | Move to previous section |
+| Ctrl+' | Jump to Tiles menu / last active tile |
 
 ### Menu Bar
 
@@ -69,15 +69,15 @@ Then open `http://localhost:8000` (or the port shown) in any modern browser.
 
 | Key | Action |
 |-----|--------|
-| Ctrl+Option+N | Move to next tile (wraps) |
-| Shift+Ctrl+Option+N | Move to previous tile (wraps) |
+| Ctrl+; | Move to next tile (wraps) |
+| Shift+Ctrl+; | Move to previous tile (wraps) |
 
 ### Within a Tile
 
 | Key | Action |
 |-----|--------|
 | Tab / Shift+Tab | Cycle through focusable elements within the tile (wraps) |
-| Ctrl+T | Open tile toolbar |
+| Ctrl+\ | Open tile toolbar |
 
 **Within a tile menu:**
 

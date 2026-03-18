@@ -67,8 +67,8 @@ export class FocusManager {
   }
 
   _handleGlobalKey(e) {
-    // Cmd+Shift+? — open keyboard shortcuts dialog
-    if (e.key === '?' && e.metaKey && e.shiftKey) {
+    // Ctrl+/ — open keyboard shortcuts dialog
+    if (e.key === '/' && e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
       this.openDocumentationDialog();
       return;
@@ -81,9 +81,8 @@ export class FocusManager {
       return;
     }
 
-    // Ctrl+6 / Shift+Ctrl+6 — cycle sections
-    // Use e.code because Shift+6 produces '^' on macOS, not '6'
-    if (e.code === 'Digit6' && e.ctrlKey && !e.altKey && !e.metaKey) {
+    // Ctrl+. / Shift+Ctrl+. — cycle sections
+    if (e.key === '.' && e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
       const current = this.sections[this.activeSectionIndex];
       current.leave();
@@ -98,9 +97,8 @@ export class FocusManager {
       return;
     }
 
-    // Ctrl+Option+Cmd+T — jump to Tiles menu
-    // Use e.code because macOS Option remaps e.key (e.g. 't' becomes '†')
-    if (e.code === 'KeyT' && e.ctrlKey && e.altKey && e.metaKey && !e.shiftKey) {
+    // Ctrl+' — jump to Tiles menu
+    if (e.key === "'" && e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
       this._jumpToTilesMenu();
       return;
