@@ -30,6 +30,7 @@ export class TileToolbar {
       ? document.getElementById(this.paletteOpener.getAttribute('aria-controls'))
       : null;
     this.paletteOpen = false;
+    this.paletteLastFocused = null;
 
     // Click handler for style menu trigger
     if (this.styleMenuTrigger) {
@@ -253,13 +254,16 @@ export class TileToolbar {
     this.paletteEl.hidden = false;
     this.paletteOpen = true;
     const checkboxes = this._getPaletteCheckboxes();
-    if (checkboxes.length > 0) {
+    if (this.paletteLastFocused && checkboxes.includes(this.paletteLastFocused)) {
+      this.paletteLastFocused.focus();
+    } else if (checkboxes.length > 0) {
       checkboxes[0].focus();
     }
   }
 
   _closePalette() {
     if (!this.paletteEl || !this.paletteOpener) return;
+    this.paletteLastFocused = document.activeElement;
     this.paletteOpener.setAttribute('aria-expanded', 'false');
     this.paletteEl.hidden = true;
     this.paletteOpen = false;
